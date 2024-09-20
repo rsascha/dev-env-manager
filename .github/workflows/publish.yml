@@ -1,0 +1,27 @@
+name: Publish to NPM
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write # Grant write access to the repository
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the latest code from the repository
+      - uses: actions/checkout@v2
+
+      # Set up Node.js environment
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
+      # Run the publish script
+      - run: ./publish.sh
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
