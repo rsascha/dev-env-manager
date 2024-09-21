@@ -1,6 +1,6 @@
 # dev-env-manager
 
-[![npm version](https://badge.fury.io/js/dev-env-manager.svg)](https://badge.fury.io/js/dev-env-manager)
+[![npm version](https://badge.fury.io/js/%40rosesoft%2Fdev-env-manager.svg)](https://badge.fury.io/js/%40rosesoft%2Fdev-env-manager)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **dev-env-manager** simplifies the setup of development environments by downloading and uploading `.env` files from secret stores. The goal is to clone a repository, run a single command, and be ready to go.
@@ -23,8 +23,8 @@ Contributions are welcome!
 Install the tool with Yarn or NPM:
 
 ```sh
-yarn add dev-env-manager
-npm install dev-env-manager
+yarn add @rosesoft/dev-env-manager
+npm install @rosesoft/dev-env-manager
 ```
 
 ---
@@ -67,14 +67,17 @@ Add the following scripts to your `package.json`:
 
 ```json
 "scripts": {
-  "download-env-files": "npx dev-env-manager --download",
-  "upload-env-files": "npx dev-env-manager --upload"
+  "upload-env-files": "npx @rosesoft/dev-env-manager --upload",
+  "download-env-files": "npx @rosesoft/dev-env-manager --download",
 }
 ```
 
 You can now run the following commands:
 
 ```sh
+npm run upload-env-files
+npm run download-env-files
+# or
 yarn upload-env-files
 yarn download-env-files
 ```
@@ -103,6 +106,8 @@ kubectl create namespace dev-namespace
 Run the following command:
 
 ```sh
+npm run sample-project:upload-env-files
+# or
 yarn sample-project:upload-env-files
 ```
 
@@ -144,6 +149,8 @@ rm sample-project/projects/service-b/.env
 Run the following command:
 
 ```sh
+npm run sample-project:download-env-files
+# or
 yarn sample-project:download-env-files
 ```
 

@@ -8,16 +8,20 @@
     "name": "Sascha Rose",
     "email": "sascha.rose@gmail.com"
   },
-  "main": "src/main.ts",
+  "main": "dist/main.js",
+  "bin": {
+    "dev-env-manager": "bin/start.sh"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
   "scripts": {
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "build": "tsc",
     "test": "jest",
     "sample-project:upload-env-files": "./bin/start.sh --upload",
     "sample-project:download-env-files": "./bin/start.sh --download"
-  },
-  "bin": {
-    "dev-env-manager": "bin/start.sh"
   },
   "dependencies": {
     "@kubernetes/client-node": "^0.22.0",
