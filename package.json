@@ -1,6 +1,6 @@
 {
-  "version": "0.1.11",
   "name": "@rosesoft/dev-env-manager",
+  "version": "0.1.11",
   "description": "Handle environment settings for local development.",
   "private": false,
   "license": "MIT",
@@ -20,8 +20,8 @@
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "build": "tsc",
     "test": "jest",
-    "download-env-files": "dev-env-manager --download",
-    "upload-env-files": "dev-env-manager --upload"
+    "download-env-files": "bin/start.sh --download",
+    "upload-env-files": "bin/start.sh --upload"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
   "repository": {
