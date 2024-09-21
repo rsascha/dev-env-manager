@@ -30,17 +30,4 @@ git push origin main --tags
 echo "Publishing to NPM..."
 npm publish --access public
 
-# Add all changes to git
-echo "Adding changes to git..."
-git add .
-
-# Commit changes (skip if there are no changes to commit)
-if git diff-index --quiet HEAD; then
-  echo "No changes to commit."
-else
-  git commit -m "chore: build artifacts [skip ci]"
-fi
-
-
-
 echo "✅ Publish complete!"
