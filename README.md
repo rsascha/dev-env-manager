@@ -24,6 +24,7 @@ Install the tool with Yarn or NPM:
 
 ```sh
 yarn add @rosesoft/dev-env-manager
+# or
 npm install @rosesoft/dev-env-manager
 ```
 
@@ -67,8 +68,8 @@ Add the following scripts to your `package.json`:
 
 ```json
 "scripts": {
-  "upload-env-files": "npx @rosesoft/dev-env-manager --upload",
-  "download-env-files": "npx @rosesoft/dev-env-manager --download",
+  "upload-env-files": "npx dev-env-manager --upload",
+  "download-env-files": "npx dev-env-manager --download",
 }
 ```
 
@@ -106,7 +107,7 @@ kubectl create namespace dev-namespace
 Run the following command:
 
 ```sh
-npm run sample-project:upload-env-files
+npm run upload-env-files
 # or
 yarn sample-project:upload-env-files
 ```
