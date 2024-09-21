@@ -9,6 +9,8 @@
 
 - Kubernetes (K8s) Secrets
 
+> **Security Note**: Kubernetes Secrets are not the most secure storage for sensitive information. Only individuals who need access to these secrets should have access to the cluster. Proper role-based access control (RBAC) and encryption should be employed to secure the secrets.
+
 ### Planned features:
 
 - AWS Secrets Manager
