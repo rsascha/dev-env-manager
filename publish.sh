@@ -11,7 +11,7 @@ fi
 
 # Install dependencies and build the project
 echo "Installing dependencies and building the project..."
-yarn install
+yarn install --frozen-lockfile
 yarn build
 
 # Configure Git user (required in GitHub Actions)
