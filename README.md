@@ -1,9 +1,5 @@
 # dev-env-manager
 
-...
-
-2024-09-21: WORK IN PROGRESS
-
 [![npm version](https://badge.fury.io/js/dev-env-manager.svg)](https://badge.fury.io/js/dev-env-manager)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -164,15 +160,15 @@ Current context set to: colima, Namespace set to: dev-namespace
 ------------------------------------------------------
 Downloading secret:
 - dev-service-a
-- to store content to file: sample-project/projects/service-a/local.env
-Downloaded secret dev-service-a to sample-project/projects/service-a/local.env
+- to store content to file: sample-project/service-a/local.env
+Downloaded secret dev-service-a to sample-project/service-a/local.env
 Downloading secret:
 - dev-service-a-container
-- to store content to file: sample-project/projects/service-a/docker/container.env
-Downloaded secret dev-service-a-container to sample-project/projects/service-a/docker/container.env
+- to store content to file: sample-project/service-a/docker/container.env
+Downloaded secret dev-service-a-container to sample-project/service-a/docker/container.env
 Downloading secret:
 - dev-service-b
-- to store content to file: sample-project/projects/service-b/.env
-Downloaded secret dev-service-b to sample-project/projects/service-b/.env
-✨  Done in 0.94s.
+- to store content to file: sample-project/service-b/.env
+Downloaded secret dev-service-b to sample-project/service-b/.env
+✨  Done in 0.92s.
 ```
