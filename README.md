@@ -3,11 +3,27 @@
 [![npm version](https://badge.fury.io/js/%40rosesoft%2Fdev-env-manager.svg)](https://badge.fury.io/js/%40rosesoft%2Fdev-env-manager)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**dev-env-manager** simplifies the setup of development environments by downloading and uploading `.env` files from secret stores. The goal is to clone a repository, run a single command, and be ready to go.
+**dev-env-manager** simplifies the setup of development environments by downloading and uploading `.env` files from systems you're already using for development, making it easy to share them with other developers.
+
+---
+
+If you're frustrated by the process of checking out a repository and then having to figure out which developer has the correct environment settings on their machine, only to wait until they’re available to send the files via chat or email - I get it, that’s annoying.
+
+The goal of this tool is simple: clone a repository, run a single command, and you're ready to go.
+
+This is a very simple solution that is easy to set up and a better alternative to sending `.env` files via email. If you're looking for a more robust, enterprise-grade solution, consider using:
+
+- [HashiCorp Vault](https://www.vaultproject.io)
+- [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/)
+- [Azure Key Vault](https://azure.microsoft.com/en-us/services/key-vault/)
+- [Google Cloud Secret Manager](https://cloud.google.com/secret-manager)
+- [Doppler](https://www.doppler.com)
+
+### Demo
 
 ![dev-env-manager Demo](assets/dev-env-manager.gif)
 
-### Currently supported secret stores:
+### Currently supported stores:
 
 - Kubernetes (K8s) Secrets
 
@@ -40,6 +56,10 @@ Create a file called `environment.config.json` in the root of your repository.
 
 Example:
 
+```plain
+environment.config.json
+```
+
 ```json
 {
   "environmentSettings": {
@@ -49,15 +69,15 @@ Example:
     "secrets": [
       {
         "name": "dev-service-a",
-        "localPath": "projects/service-a/local.env"
+        "localPath": "sample-project/service-a/local.env"
       },
       {
         "name": "dev-service-a-container",
-        "localPath": "projects/service-a/docker/container.env"
+        "localPath": "sample-project/service-a/docker/container.env"
       },
       {
         "name": "dev-service-b",
-        "localPath": "projects/service-b/.env"
+        "localPath": "sample-project/service-b/.env"
       }
     ]
   }
@@ -66,16 +86,29 @@ Example:
 
 ---
 
-## Usage
-
 Add the following scripts to your `package.json`:
 
 ```json
 "scripts": {
-  "upload-env-files": "npx dev-env-manager --upload",
-  "download-env-files": "npx dev-env-manager --download",
+  "upload-env-files": "dev-env-manager --upload",
+  "download-env-files": "dev-env-manager --download",
 }
 ```
+
+---
+
+_Please note that for the sample project, I am using the following scripts:_
+
+```json
+"scripts": {
+  "download-env-files": "bin/start.sh --download",
+  "upload-env-files": "bin/start.sh --upload"
+}
+```
+
+_This is because I cannot use my NPM module within itself. For typical usage in other projects, you should be able to use the dev-env-manager command via NPM._
+
+## Usage
 
 You can now run the following commands:
 
@@ -108,18 +141,24 @@ kubectl create namespace dev-namespace
 
 ### Upload `.env` files:
 
+Create some `.env` files:
+
+- `sample-project/service-a/local.env`
+- `sample-project/service-a/docker/container.env`
+- `sample-project/service-b/.env`
+
 Run the following command:
 
 ```sh
 npm run upload-env-files
 # or
-yarn sample-project:upload-env-files
+yarn upload-env-files
 ```
 
 You will see output like this:
 
 ```plain
-$ yarn sample-project:upload-env-files
+$ yarn upload-env-files
 yarn run v1.22.22
 $ ./bin/start.sh --upload
 Config loaded.
@@ -128,25 +167,19 @@ Current context set to: colima, Namespace set to: dev-namespace
 -          Uploading Environment Settings            -
 ------------------------------------------------------
 ? Select the files you want to upload to k8s: (Press <space> to select, <a> to toggle all, <i> to invert selection, and <enter> to proceed)
-❯◯ sample-project/projects/service-a/local.env
- ◯ sample-project/projects/service-a/docker/container.env
- ◯ sample-project/projects/service-b/.env
+❯◯ sample-project/service-a/local.env
+ ◯ sample-project/service-a/docker/container.env
+ ◯ sample-project/service-b/.env
 ```
 
 Select the files you want to upload and press Enter.
 
-Verify that the secrets were successfully created:
-
-```sh
-kubectl get secrets -n dev-namespace
-```
-
 ### Delete the local `.env` files:
 
 ```sh
-rm sample-project/projects/service-a/local.env
-rm sample-project/projects/service-a/docker/container.env
-rm sample-project/projects/service-b/.env
+rm sample-project/service-a/local.env
+rm sample-project/service-a/docker/container.env
+rm sample-project/service-b/.env
 ```
 
 ### Download the `.env` files:
@@ -154,15 +187,15 @@ rm sample-project/projects/service-b/.env
 Run the following command:
 
 ```sh
-npm run sample-project:download-env-files
+npm run download-env-files
 # or
-yarn sample-project:download-env-files
+yarn download-env-files
 ```
 
 You will see output like this:
 
 ```plain
-$ yarn sample-project:download-env-files
+$ yarn download-env-files
 yarn run v1.22.22
 $ ./bin/start.sh --download
 Config loaded.
