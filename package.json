@@ -1,6 +1,6 @@
 {
   "name": "@rosesoft/dev-env-manager",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "Handle environment settings for local development.",
   "private": false,
   "license": "MIT",
