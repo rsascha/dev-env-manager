@@ -5,6 +5,8 @@
 
 **dev-env-manager** simplifies the setup of development environments by downloading and uploading `.env` files from secret stores. The goal is to clone a repository, run a single command, and be ready to go.
 
+![dev-env-manager Demo](assets/dev-env-manager.gif)
+
 ### Currently supported secret stores:
 
 - Kubernetes (K8s) Secrets
